@@ -12,8 +12,8 @@ const ChatScreen : React.FC = () => {
 	// const [people, setPeople] = useState({})
 
 	const actionButtons = [
-		(key) => <IconButton key={key} classNames={"h-9 w-9 rounded-full active:bg-mainLightHover"} icon={<MagnifyingGlassIcon className={"h-5 w-5 text-mainLight"}  onClickHandler={() => {}} />} />,
-		(key) => <IconButton key={key} classNames={"h-9 w-9 rounded-full active:bg-mainLightHover"} icon={<EllipsisVerticalIcon className={"h-6 w-6 text-mainLight"}  onClickHandler={() => {}} />} />
+		(key: number) => <IconButton key={key} classNames={"h-9 w-9 rounded-full active:bg-mainLightHover"} icon={<MagnifyingGlassIcon className={"h-5 w-5 text-mainLight"} />} onClickHandler={() => {}} />,
+		(key: number) => <IconButton key={key} classNames={"h-9 w-9 rounded-full active:bg-mainLightHover"} icon={<EllipsisVerticalIcon className={"h-6 w-6 text-mainLight"} />} onClickHandler={() => {}} />
 	]
 
 	// setPeople({name: "Rohan"})

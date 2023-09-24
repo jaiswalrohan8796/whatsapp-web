@@ -1,9 +1,11 @@
 import React from "react";
 import People from "@/components/shared/People";
 
+import {IPeople} from "@/utils/globalConstants";
+
 const PeopleList = (): React.JSX.Element => {
 
-	const peopleData = [
+	const peopleData: IPeople[] = [
 		{
 			name : "Aarav Rathore",
 			profileURL: "",

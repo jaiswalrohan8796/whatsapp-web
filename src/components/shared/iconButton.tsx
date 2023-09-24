@@ -1,12 +1,12 @@
 import React from "react";
 import Image from "next/image"
 interface IIconButton {
-	icon: React.FC;
+	icon: React.JSX.Element;
 	onClickHandler: Function;
-	classNames?: ""
+	classNames?: string;
 }
-const IconButton: React.FC = ({icon, onClickHandle, classNames=""}: IIconButton) => {
-	return <button className={`flex justify-center items-center ${classNames}`} onClick={onClickHandle}>
+const IconButton = ({icon, onClickHandler, classNames = ""}: IIconButton): React.JSX.Element => {
+	return <button className={`flex justify-center items-center ${classNames}`} onClick={() => onClickHandler()}>
 			{icon}
 		</button>
 }

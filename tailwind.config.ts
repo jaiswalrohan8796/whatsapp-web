@@ -8,11 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        transparent: "transparent",
+        main: "#1F2C33",
+        mainDark: "#111B21",
+        mainLight: "#ADBAC1",
+        mainLightHover: "#374146",
+        mainInput: "#2A3942"
       },
+      backgroundImage: {
+        messageScreen: "url('/images/message-bg-5.jpg')",
+      }
     },
   },
   plugins: [],

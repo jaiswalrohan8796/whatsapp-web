@@ -1,35 +1,72 @@
 import IconButton from "@/components/shared/iconButton";
-import {EllipsisVerticalIcon, MagnifyingGlassIcon} from "@heroicons/react/24/solid";
-import React, {useState} from "react";
+import {
+  EllipsisVerticalIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/24/solid";
+import React, { useState } from "react";
 
 import ProfileToolbar from "@/components/ProfileToolbar";
 import MessageScreen from "@/components/MessageScreen";
 import InputBar from "@/components/InputBar";
+import { IPeople } from "@/utils/globalConstants";
 
-
-const ChatScreen : React.FC = () => {
-
-	// const [people, setPeople] = useState({})
-
-	const actionButtons = [
-		(key: number) => <IconButton key={key} classNames={"h-9 w-9 rounded-full active:bg-mainLightHover"} icon={<MagnifyingGlassIcon className={"h-5 w-5 text-mainLight"} />} onClickHandler={() => {}} />,
-		(key: number) => <IconButton key={key} classNames={"h-9 w-9 rounded-full active:bg-mainLightHover"} icon={<EllipsisVerticalIcon className={"h-6 w-6 text-mainLight"} />} onClickHandler={() => {}} />
-	]
-
-	// setPeople({name: "Rohan"})
-
-	const textContentRender = (header = "Rohan", footer = "click here for contact info") => {
-		return <div className={"flex flex-col justify-center"}>
-			<p className={"text-white text-md"}>{header}</p>
-			<p className={"text-xs text-gray-400"}>{footer}</p>
-		</div>
-	}
-
-	return <div className={"h-full w-[70%] flex flex-col items-center justify-between bg-mainDark"}>
-		<ProfileToolbar classNames={"px-4"} avatar={""} textContentRender={textContentRender} actionsButtons={actionButtons} />
-		<MessageScreen />
-		<InputBar />
-	</div>
+interface props {
+  peopleData: IPeople[];
+  currUser: number;
 }
 
-export default ChatScreen
+const ChatScreen = ({ currUser, peopleData }: props) => {
+  // const [people, setPeople] = useState({})
+
+  const actionButtons = [
+    (key: number) => (
+      <IconButton
+        key={key}
+        classNames={"h-9 w-9 rounded-full active:bg-mainLightHover"}
+        icon={<MagnifyingGlassIcon className={"h-5 w-5 text-mainLight"} />}
+        onClickHandler={() => {}}
+      />
+    ),
+    (key: number) => (
+      <IconButton
+        key={key}
+        classNames={"h-9 w-9 rounded-full active:bg-mainLightHover"}
+        icon={<EllipsisVerticalIcon className={"h-6 w-6 text-mainLight"} />}
+        onClickHandler={() => {}}
+      />
+    ),
+  ];
+
+  const currUserData = peopleData.filter((people) => people.id == currUser)[0];
+
+  const textContentRender = (
+    header = currUserData.name,
+    footer = "click here for contact info",
+  ) => {
+    return (
+      <div className={"flex flex-col justify-center"}>
+        <p className={"text-white text-md"}>{header}</p>
+        <p className={"text-xs text-gray-400"}>{footer}</p>
+      </div>
+    );
+  };
+
+  return (
+    <div
+      className={
+        "h-full w-[70%] flex flex-col items-center justify-between bg-mainDark"
+      }
+    >
+      <ProfileToolbar
+        classNames={"px-4"}
+        avatar={""}
+        textContentRender={textContentRender}
+        actionsButtons={actionButtons}
+      />
+      <MessageScreen />
+      <InputBar />
+    </div>
+  );
+};
+
+export default ChatScreen;

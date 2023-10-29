@@ -6,10 +6,11 @@ import Image from "next/image"
 
 interface IPeopleJSX {
 	data: IPeople;
+	onPeopleClick: Function
 }
 
-const People = ({data}: IPeopleJSX): React.JSX.Element => {
-	return <div className={`h-[74px] w-full pl-1 bg-mainDark flex flex-row items-center hover:bg-main cursor-pointer`}>
+const People = ({data, onPeopleClick}: IPeopleJSX): React.JSX.Element => {
+	return <div className={`h-[74px] w-full pl-1 bg-mainDark flex flex-row items-center hover:bg-main cursor-pointer`} onClick={() => onPeopleClick(data.id)}>
 		<Avatar classNames={""} height={55} width={55} />
 		<div className={"h-full w-full flex flex-col justify-center p-2 border-b border-main"}>
 			<div className={"flex flex-row items-center justify-between"}>

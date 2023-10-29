@@ -1,4 +1,5 @@
 export interface IPeople {
+	id: number,
 	name: string,
 	profileURL: string,
 	unreadMessage: number,

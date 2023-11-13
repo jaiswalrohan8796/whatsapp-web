@@ -1,6 +1,19 @@
 import { signInWithGoogle } from "@/utils/auth";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useState } from "react";
 const Login = () => {
+  const router = useRouter();
+  const [error, setError] = useState(false);
+
+  const signInFlow = async () => {
+    const isAuthenticated = await signInWithGoogle();
+    if (isAuthenticated) await router.push("/");
+    else {
+      setError(true);
+    }
+  };
+
   return (
     <div
       className={
@@ -24,10 +37,15 @@ const Login = () => {
             width={30}
           />
         </div>
-        <div className={"w-3/4"} onClick={() => signInWithGoogle()}>
+        <div className={"w-3/4"} onClick={() => signInFlow()}>
           <p>Sign in with Google</p>
         </div>
       </div>
+      {error && (
+        <div>
+          <p className={"text-red-600"}>Something went wrong !</p>
+        </div>
+      )}
     </div>
   );
 };

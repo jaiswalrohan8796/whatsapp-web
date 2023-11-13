@@ -6,9 +6,10 @@ export async function signInWithGoogle() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: "/",
+      redirectTo: process.env.NEXT_PUBLIC_SITE_URL,
     },
   });
+  return true;
 }
 
 export async function signOut() {

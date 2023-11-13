@@ -18,25 +18,6 @@ interface props {
 const ChatScreen = ({ currUser, peopleData }: props) => {
   // const [people, setPeople] = useState({})
 
-  const actionButtons = [
-    (key: number) => (
-      <IconButton
-        key={key}
-        classNames={"h-9 w-9 rounded-full active:bg-mainLightHover"}
-        icon={<MagnifyingGlassIcon className={"h-5 w-5 text-mainLight"} />}
-        onClickHandler={() => {}}
-      />
-    ),
-    (key: number) => (
-      <IconButton
-        key={key}
-        classNames={"h-9 w-9 rounded-full active:bg-mainLightHover"}
-        icon={<EllipsisVerticalIcon className={"h-6 w-6 text-mainLight"} />}
-        onClickHandler={() => {}}
-      />
-    ),
-  ];
-
   const currUserData = peopleData.filter((people) => people.id == currUser)[0];
 
   const textContentRender = (
@@ -57,12 +38,7 @@ const ChatScreen = ({ currUser, peopleData }: props) => {
         "h-full w-[70%] flex flex-col items-center justify-between bg-mainDark"
       }
     >
-      <ProfileToolbar
-        classNames={"px-4"}
-        avatar={""}
-        textContentRender={textContentRender}
-        actionsButtons={actionButtons}
-      />
+      <ProfileToolbar classNames={"px-4"} avatar={""} />
       <MessageScreen />
       <InputBar />
     </div>

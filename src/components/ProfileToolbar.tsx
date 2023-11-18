@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@/components/Avatar";
 import IconButton from "@/components/shared/iconButton";
 import {
@@ -10,6 +10,7 @@ import {
 import OptionDropdown from "@/components/shared/optionDropdown";
 import { signOut } from "@/utils/auth";
 import { useRouter } from "next/router";
+import Modal from "@/components/shared/Modal";
 
 interface IProfileToolbar {
   avatar: any;
@@ -25,7 +26,9 @@ const ProfileToolbar = ({
     (key: number) => (
       <IconButton
         key={key}
-        classNames={"h-9 w-9 rounded-full active:bg-mainLightHover"}
+        classNames={
+          "h-9 w-9 rounded-full active:bg-mainLightHover hover:bg-mainLightHover"
+        }
         icon={<UserGroupIcon className={"h-6 w-6 text-mainLight"} />}
         onClickHandler={() => {}}
       />
@@ -33,7 +36,9 @@ const ProfileToolbar = ({
     (key: number) => (
       <IconButton
         key={key}
-        classNames={"h-9 w-9 rounded-full active:bg-mainLightHover"}
+        classNames={
+          "h-9 w-9 rounded-full active:bg-mainLightHover hover:bg-mainLightHover"
+        }
         icon={<SwatchIcon className={"h-6 w-6 text-mainLight"} />}
         onClickHandler={() => {}}
       />
@@ -41,7 +46,9 @@ const ProfileToolbar = ({
     (key: number) => (
       <IconButton
         key={key}
-        classNames={"h-9 w-9 rounded-full active:bg-mainLightHover"}
+        classNames={
+          "h-9 w-9 rounded-full active:bg-mainLightHover hover:bg-mainLightHover"
+        }
         icon={<MegaphoneIcon className={"h-6 w-6 text-mainLight"} />}
         onClickHandler={() => {}}
       />
@@ -49,12 +56,17 @@ const ProfileToolbar = ({
     (key: number) => (
       <IconButton
         key={key}
-        classNames={"h-9 w-9 rounded-full active:bg-mainLightHover"}
+        classNames={`h-9 w-9 rounded-full active:bg-mainLightHover hover:bg-mainLightHover ${
+          addContactModal ? "bg-mainLightHover" : ""
+        }`}
         icon={<FolderPlusIcon className={"h-6 w-6 text-mainLight"} />}
-        onClickHandler={() => {}}
+        onClickHandler={() => {
+          setAddContactModal(true);
+        }}
       />
     ),
   ];
+  const [addContactModal, setAddContactModal] = useState(false);
 
   const optionsList = () => {
     return (
@@ -79,7 +91,7 @@ const ProfileToolbar = ({
   };
   return (
     <div
-      className={`w-full h-[60px] p-2 px-4 bg-main flex flex-row justify-between items-center ${classNames}`}
+      className={`relative w-full h-[60px] p-2 px-4 bg-main flex flex-row justify-between items-center ${classNames}`}
     >
       <div className={"flex flex-row items-center justify-start gap-2"}>
         <Avatar src={avatar} />
@@ -89,6 +101,16 @@ const ProfileToolbar = ({
           return actionFunc(idx);
         })}
         <OptionDropdown optionsList={optionsList} />
+        <Modal
+          visible={addContactModal}
+          setVisible={setAddContactModal}
+          title={"Add contact"}
+        >
+          <div className={"h-[300px]"}>
+            <label>Email</label>
+            <input type={"email"} value={""} />
+          </div>
+        </Modal>
       </div>
     </div>
   );

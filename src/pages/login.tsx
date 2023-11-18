@@ -22,7 +22,6 @@ const Login = () => {
     >
       <div className={"flex flex-col items-center justify-center gap-4"}>
         <p className={"text-4xl"}>Welcome to Whatsapp Web</p>
-        <p className={"text-sm"}>Made by Rohan :)</p>
       </div>
       <div
         className={

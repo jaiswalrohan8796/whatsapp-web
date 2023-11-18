@@ -13,7 +13,7 @@ const OptionDropdown = ({ optionsList }: props) => {
       <IconButton
         classNames={`h-9 w-9 rounded-full ${
           showOption ? "bg-mainLightHover" : ""
-        }  `}
+        } hover:bg-mainLightHover `}
         icon={<EllipsisVerticalIcon className={"h-6 w-6 text-mainLight"} />}
         onClickHandler={() => {
           setShowOption(!showOption);

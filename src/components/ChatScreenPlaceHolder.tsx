@@ -1,3 +1,6 @@
+import { FolderPlusIcon } from "@heroicons/react/24/solid";
+import React from "react";
+
 const ChatScreenPlaceHolder = () => {
   return (
     <div
@@ -7,8 +10,9 @@ const ChatScreenPlaceHolder = () => {
     >
       <div className={"flex flex-col items-center justify-center gap-4"}>
         <p className={"text-2xl"}>Whatsapp Web</p>
-        <p className={"text-base"}>
-          Welcome to whatsapp web side project made by Rohan
+        <p className={"text-base flex gap-1 flex-nowrap"}>
+          Click on the <FolderPlusIcon className={"h-6 w-6 text-mainLight"} />
+          icon to add contacts
         </p>
       </div>
     </div>

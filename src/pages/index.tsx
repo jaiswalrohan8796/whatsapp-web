@@ -32,7 +32,7 @@ export default function Index() {
   };
 
   useEffect(() => {
-    authenticateUser();
+    authenticateUser().then((r) => {});
   }, []);
   return (
     <div className={"w-screen h-screen flex flex-row gap-0 overflow-hidden"}>

@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import AvatarIcon from "@/components/shared/svg/Avatar";
 interface IAvatar {
   src: string;
   classNames?: string;
@@ -15,13 +16,17 @@ const Avatar = ({
 }: IAvatar): React.JSX.Element => {
   return (
     <div>
-      <Image
-        className={`text-mainLight cursor-pointer h-[40px] w-[40px] rounded-full object-cover ${classNames}`}
-        src={src}
-        height={height}
-        width={width}
-        alt={"profile"}
-      />
+      {src ? (
+        <Image
+          className={`text-mainLight cursor-pointer h-[40px] w-[40px] rounded-full object-cover ${classNames}`}
+          src={src}
+          height={height}
+          width={width}
+          alt={"profile"}
+        />
+      ) : (
+        <AvatarIcon />
+      )}
     </div>
   );
 };

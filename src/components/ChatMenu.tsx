@@ -26,7 +26,7 @@ const ChatMenu = ({ peopleData, user }: props) => {
     <div
       className={"w-[30%] h-full bg-mainDark border-r border-mainLightHover"}
     >
-      <ProfileToolbar avatar={user?.picture} />
+      <ProfileToolbar avatar={user?.picture} user={user} />
       <FilterSection />
       <PeopleList peopleData={peopleData} onPeopleClick={onPeopleClick} />
     </div>

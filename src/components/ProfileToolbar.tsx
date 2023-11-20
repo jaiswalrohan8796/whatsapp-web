@@ -11,17 +11,21 @@ import OptionDropdown from "@/components/shared/optionDropdown";
 import { signOut } from "@/utils/auth";
 import { useRouter } from "next/router";
 import Modal from "@/components/shared/Modal";
+import AddContactModal from "@/components/AddContactModal";
 
 interface IProfileToolbar {
+  user: any;
   avatar: any;
   classNames?: string;
 }
 
 const ProfileToolbar = ({
+  user,
   avatar,
   classNames = "",
 }: IProfileToolbar): React.JSX.Element => {
   const router = useRouter();
+  const [showAddContactModal, setShowAddContactModal] = useState(false);
   const actionsButtons = [
     (key: number) => (
       <IconButton
@@ -57,17 +61,15 @@ const ProfileToolbar = ({
       <IconButton
         key={key}
         classNames={`h-9 w-9 rounded-full active:bg-mainLightHover hover:bg-mainLightHover ${
-          addContactModal ? "bg-mainLightHover" : ""
+          showAddContactModal ? "bg-mainLightHover" : ""
         }`}
         icon={<FolderPlusIcon className={"h-6 w-6 text-mainLight"} />}
         onClickHandler={() => {
-          setAddContactModal(true);
+          setShowAddContactModal(true);
         }}
       />
     ),
   ];
-  const [addContactModal, setAddContactModal] = useState(false);
-
   const optionsList = () => {
     return (
       <div
@@ -101,16 +103,11 @@ const ProfileToolbar = ({
           return actionFunc(idx);
         })}
         <OptionDropdown optionsList={optionsList} />
-        <Modal
-          visible={addContactModal}
-          setVisible={setAddContactModal}
-          title={"Add contact"}
-        >
-          <div className={"h-[300px]"}>
-            <label>Email</label>
-            <input type={"email"} value={""} />
-          </div>
-        </Modal>
+        <AddContactModal
+          user={user}
+          showAddContactModal={showAddContactModal}
+          setShowAddContactModal={setShowAddContactModal}
+        />
       </div>
     </div>
   );

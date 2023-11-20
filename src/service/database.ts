@@ -15,3 +15,18 @@ export const findUser = async (email: string) => {
   // @ts-ignore
   return res?.data[0];
 };
+
+export const addToContacts = async (
+  user_id: string | undefined,
+  contact_id: string,
+) => {
+  return supabase
+    .from("user_contact")
+    .update({ contact_id: JSON.stringify([]) })
+    .eq("user_id", user_id);
+};
+
+export const getContacts = async (user_id: string | undefined) => {
+  console.log(user_id);
+  return supabase.from("user_contact").select().eq("user_id", user_id);
+};

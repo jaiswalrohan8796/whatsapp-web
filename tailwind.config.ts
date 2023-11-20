@@ -16,6 +16,8 @@ const config: Config = {
         mainLightHover: "#374146",
         mainInput: "#2A3942",
         message: "#015C4B",
+        action: "#02a67e",
+        actionHover: "#03CF9C",
       },
       backgroundImage: {
         messageScreen: "url('/images/message-bg-5.jpg')",

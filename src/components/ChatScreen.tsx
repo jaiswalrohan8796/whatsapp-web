@@ -38,8 +38,7 @@ const ChatScreen = ({ currUser, peopleData }: props) => {
         "h-full w-[70%] flex flex-col items-center justify-between bg-mainDark"
       }
     >
-      <ProfileToolbar classNames={"px-4"} avatar={""} />
-      <MessageScreen />
+      <ProfileToolbar classNames={"px-4"} avatar={""} user={{}} />
       <InputBar />
     </div>
   );
